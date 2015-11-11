@@ -1,0 +1,32 @@
+# https://circleci.com/docs/docker
+machine:
+  environment:
+    DATE: $(date +%Y%m%dT%H%M)
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - cat /etc/os-release
+  override:
+    - docker info
+    - docker version
+    - docker build -t dotnet:alpine -f Dockerfile.alpine .
+
+test:
+  override:
+    - docker run dotnet:alpine bash -lc "cd sample && make"
+
+# https://circleci.com/docs/configuration#deployment
+# https://circleci.com/docs/environment-variables
+deployment:
+  master:
+    branch: master
+    owner: jumanjihouse
+    commands:
+      - docker login -e ${mail} -u ${user} -p ${pass}
+      - docker tag dotnet:alpine jumanjiman/dotnet:alpine-${DATE}-git-${CIRCLE_SHA1:0:7}
+      - docker push jumanjiman/dotnet:alpine-${DATE}-git-${CIRCLE_SHA1:0:7}
+      - docker tag dotnet:alpine jumanjiman/dotnet:latest
+      - docker push jumanjiman/dotnet:latest
+      - docker logout

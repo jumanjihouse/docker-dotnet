@@ -1,0 +1,37 @@
+# https://github.com/frol/docker-alpine-glibc
+FROM frolvlad/alpine-glibc
+
+LABEL HowTo=https://dotnet.github.io/core/getting-started/
+
+# Install dependencies.
+RUN echo "http://dl-4.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
+    echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
+    echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
+    apk add --update \
+      alpine-sdk \
+      bash \
+      libstdc++ \
+      mono \
+      mono-dev \
+      mono-lang \
+      openssl-dev \
+      unzip \
+      vim \
+      && \
+    rm -f /var/cache/apk/*
+
+# Create an unprivileged user.
+RUN adduser -D user
+
+# Copy a tiny sample app into the image.
+COPY sample /home/user/sample/
+RUN chown -R user:user /home/user
+
+# Run everything after this line as the unprivileged user (and start in home dir).
+USER user
+WORKDIR /home/user/
+
+# Install .Net Core Execution environment (DNX).
+COPY install.sh /
+RUN /install.sh && \
+    cp -f .bash_profile .bashrc
