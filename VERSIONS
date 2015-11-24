@@ -1,6 +1,6 @@
 # This value can be a commit hash or tag from
 # https://github.com/aspnet/Home/tags
-INSTALLER_VER="dev"
+INSTALLER_VER="v1.0.0-rc1-final"
 
 # This value can be a branch name from
 # https://github.com/aspnet/dnx/branches
@@ -11,4 +11,5 @@ DNX_BRANCH="dev"
 # https://www.nuget.org/packages/dnx-mono/ or "latest".
 #
 # Omit the `-u' for stable feed.
-CORECLR_VER="latest -u"
+#CORECLR_VER="latest -u"
+CORECLR_VER="1.0.0-rc1-final"

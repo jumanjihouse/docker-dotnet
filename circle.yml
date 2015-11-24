@@ -16,6 +16,8 @@ dependencies:
 test:
   override:
     - docker run dotnet:alpine bash -lc "cd sample && make"
+    - docker run dotnet:alpine bash -lc "dnvm list" | tee /tmp/dnvm.list
+    - source VERSIONS; egrep "${CORECLR_VER}\s+coreclr" /tmp/dnvm.list
 
 # https://circleci.com/docs/configuration#deployment
 # https://circleci.com/docs/environment-variables
