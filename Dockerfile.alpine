@@ -32,6 +32,6 @@ USER user
 WORKDIR /home/user/
 
 # Install .Net Core Execution environment (DNX).
-COPY install.sh /
+COPY install.sh VERSIONS /
 RUN /install.sh && \
     cp -f .bash_profile .bashrc
