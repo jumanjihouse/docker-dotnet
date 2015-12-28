@@ -1,7 +1,8 @@
 DotNet Core on Linux
 ====================
 
-[![](https://badge.imagelayers.io/jumanjiman/dotnet.svg)](https://imagelayers.io/?images=jumanjiman/dotnet:latest 'View image size and layers')&nbsp;
+[![Image Size](https://img.shields.io/imagelayers/image-size/jumanjiman/dotnet/latest.svg)](https://imagelayers.io/?images=jumanjiman/dotnet:latest 'View image size')&nbsp;
+[![Image Layers](https://img.shields.io/imagelayers/layers/jumanjiman/dotnet/latest.svg)](https://imagelayers.io/?images=jumanjiman/dotnet:latest 'View image layers')&nbsp;
 [![Docker Registry](https://img.shields.io/docker/pulls/jumanjiman/dotnet.svg)](https://registry.hub.docker.com/u/jumanjiman/dotnet)&nbsp;
 [![Circle CI](https://circleci.com/gh/jumanjihouse/docker-dotnet.png?circle-token=f2af513102aef4eb6f4b27c957cb656a4030a9b5)](https://circleci.com/gh/jumanjihouse/docker-dotnet/tree/master 'View CI builds')
 
