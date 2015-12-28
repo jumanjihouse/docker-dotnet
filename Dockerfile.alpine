@@ -1,13 +1,14 @@
 # https://github.com/frol/docker-alpine-glibc
-FROM frolvlad/alpine-glibc
+FROM frolvlad/alpine-glibc:alpine-3.3
 
 LABEL HowTo=https://dotnet.github.io/core/getting-started/
 
 # Install dependencies.
+# Create an unprivileged user.
 RUN echo "http://dl-4.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories && \
     echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    apk add --update \
+    apk add --no-cache \
       alpine-sdk \
       bash \
       libstdc++ \
@@ -18,10 +19,7 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
       unzip \
       vim \
       && \
-    rm -f /var/cache/apk/*
-
-# Create an unprivileged user.
-RUN adduser -D user
+    adduser -D user
 
 # Copy a tiny sample app into the image.
 COPY sample /home/user/sample/
