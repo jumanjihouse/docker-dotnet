@@ -9,15 +9,12 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/edge/main" >> /etc/apk/repositories
     echo "http://dl-4.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
     echo "http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
     apk add --no-cache \
-      alpine-sdk \
       bash \
-      libstdc++ \
+      curl \
+      make \
       mono \
       mono-dev \
       mono-lang \
-      openssl-dev \
-      unzip \
-      vim \
       && \
     adduser -D user
 
