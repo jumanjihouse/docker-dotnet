@@ -12,4 +12,4 @@ DNX_BRANCH="dev"
 #
 # Omit the `-u' for stable feed.
 #CORECLR_VER="latest -u"
-CORECLR_VER="1.0.0-rc1-update1"
+CORECLR_VER="1.0.0-rc1-update2"
