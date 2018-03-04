@@ -1,3 +1,9 @@
+This project is archived
+========================
+
+:warning: Use [the Microsoft version](https://github.com/dotnet/dotnet-docker).
+
+
 DotNet Core on Linux
 ====================
 
